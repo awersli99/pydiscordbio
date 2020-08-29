@@ -8,8 +8,8 @@ class Client:
         self.request_client = RequestClient()
         self.base_url = base_url
 
-    async def user(self, identifier: str):
-        details, status = await self.request_client.make_request(endpoint=f'{self.base_url}user/details/{identifier}')
+    async def user(self, identifier):
+        details, status = await self.request_client.make_request(endpoint=f'{self.base_url}user/details/{str(identifier)}')
         if status == 404:
             raise UserNotFound('User could not be found')
         if status != 200:

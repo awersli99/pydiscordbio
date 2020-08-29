@@ -33,7 +33,7 @@ client = Client()
 ```py
 user = await client.user("wa")
 #or
-user = await client.user("738128655145762949")
+user = await client.user(738128655145762949)
 ```
 
 * Getting a specific value from a user's details, e.g. description or a users banner URL
