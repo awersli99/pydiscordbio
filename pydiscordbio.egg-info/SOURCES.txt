@@ -1,0 +1,14 @@
+README.md
+setup.py
+pydiscordbio/__init__.py
+pydiscordbio/client.py
+pydiscordbio/exceptions.py
+pydiscordbio/request.py
+pydiscordbio.egg-info/PKG-INFO
+pydiscordbio.egg-info/SOURCES.txt
+pydiscordbio.egg-info/dependency_links.txt
+pydiscordbio.egg-info/not-zip-safe
+pydiscordbio.egg-info/requires.txt
+pydiscordbio.egg-info/top_level.txt
+pydiscordbio/models/__init__.py
+pydiscordbio/models/user_details.py

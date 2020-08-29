@@ -1,4 +1,5 @@
 .DS_Store
+build.sh
 __pycache__/
 pydiscordbio/__pycache__/
 pydiscordbio/models/__pycache__/

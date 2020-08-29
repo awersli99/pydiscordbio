@@ -14,7 +14,7 @@ __author__ = "awersli99 (Adam Worsley)"
 __email__ = "adam@aworsley.me"
 
 __title__ = "pydiscordbio"
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 __summary__ = "An unoffical asynchronous wrapper for the discord.bio API."
 __uri__ = "https://github.com/awersli99/pydiscordbio"
 
