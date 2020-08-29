@@ -1,3 +1,7 @@
 ### discordbio.py
 
-An unoffical asyncronous wrapper for the [discord.bio](https://discord.bio) api.
+An unofficial asynchronous wrapper for the [discord.bio](https://discord.bio) api.
+
+### WARNING
+
+This is not ready to be used in anything yet.
