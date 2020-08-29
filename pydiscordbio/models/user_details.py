@@ -132,6 +132,7 @@ class UserDetails:
     """A discord.bio user object"""
     details: User
     discord: Discord
+    connections: UserConnections
 
     def __init__(self, obj: dict) -> 'UserDetails':
         assert isinstance(
