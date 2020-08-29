@@ -4,4 +4,4 @@ An unofficial asynchronous wrapper for the [discord.bio](https://discord.bio) ap
 
 ### WARNING
 
-This is not ready to be used in anything yet.
+This is not ready to be used in anything, it is unfinished no documentation has been written yet.
