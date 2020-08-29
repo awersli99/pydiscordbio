@@ -1,3 +1,4 @@
 .DS_Store
-discordbio/__pycache__/
-discordbio/models/__pycache__/
+__pycache__/
+pydiscordbio/__pycache__/
+pydiscordbio/models/__pycache__/
