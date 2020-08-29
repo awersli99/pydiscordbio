@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 from datetime import datetime
 import dateutil.parser
 
@@ -101,16 +101,43 @@ class User:
         self.staff = obj.get('staff', False)
         self.likes = obj.get('likes', 0)
 
+class DiscordConnection:
+    connection_type: str
+    name: str
+    id: str
+
+    def __init__(self, obj: dict) -> 'DiscordConnection':
+        assert isinstance(obj, dict), 'Received malformed payload from discord.bio API'
+        self.connection_type = [*obj][0]
+        self.name = obj.get([*obj][0]).get("name")
+        self.id = obj.get([*obj][0]).get("id")
+
+class UserConnections:
+    website: Optional[str]
+    instagram: Optional[str]
+    snapchat: Optional[str]
+    linkedin: Optional[str]
+    discord: List[DiscordConnection]
+
+    def __init__(self, obj: dict, discord: list = []) -> 'UserConnections':
+        assert isinstance(obj, dict), 'Received malformed payload from discord.bio API'
+        self.website = obj.get("website", None)
+        self.instagram = obj.get("instagram", None)
+        self.snapchat = obj.get("snapchat", None)
+        self.linkedin = obj.get("linkedin", None)
+        self.discord = [DiscordConnection(c) for c in discord]
+
 
 class UserDetails:
     """A discord.bio user object"""
     details: User
-    settings: User  # backwards compatibility
     discord: Discord
 
     def __init__(self, obj: dict) -> 'UserDetails':
         assert isinstance(
             obj, dict), 'Received malformed payload from discord.bio API'
-        self.details = self.settings = User(
+        self.details = User(
             obj.get("user", {}).get("details", None))
         self.discord = Discord(obj.get("discord"))
+        
+        self.connections = UserConnections(obj.get("user", {}).get("userConnections"), obj.get("user", {}).get("discordConnections"))

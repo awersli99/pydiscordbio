@@ -8,6 +8,4 @@ This is not ready to be used in anything, it is unfinished no documentation has 
 
 ## Todo
 
-- Connections
 - Top Likes
-- setup.py

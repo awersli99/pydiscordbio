@@ -14,7 +14,6 @@ class Client:
             raise UserNotFound('User could not be found')
         if status != 200:
             raise APIError('There was an error with the API')
-        print(details)
         return UserDetails(details['payload'])
 
     async def close(self):
