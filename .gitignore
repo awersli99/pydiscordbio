@@ -1,6 +1,7 @@
 .DS_Store
 build.sh
 pydiscordbio.egg-info/
+Docs.md
 dist/
 build/
 __pycache__/
