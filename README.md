@@ -62,6 +62,13 @@ discord_connections = (await client.user("wa")).connections.discord
 # Returns a list of DiscordConnection objects
 ```
 
+* Miscellaneous Endpoints
+
+```py
+top_users = await client.top() 
+# Returns a list of PartialUser objects
+```
+
 ### Attributes
 
 * UserDetails (from client.user)
@@ -110,6 +117,17 @@ instagram: Optional[str]
 snapchat: Optional[str]
 linkedin: Optional[str]
 discord: List[DiscordConnection]
+```
+
+* PartialUser
+```py
+slug: str
+verified: bool
+staff: bool
+premium: bool
+likes: int
+description: Optional[str]
+discord: Discord
 ```
 
 * DiscordConnection

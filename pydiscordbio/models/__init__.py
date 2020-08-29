@@ -1,1 +1,1 @@
-from .user_details import UserDetails, User, Discord, DiscordConnection, UserConnections
+from .user_details import UserDetails, User, Discord, DiscordConnection, UserConnections, PartialUser

@@ -51,6 +51,10 @@ async def print_all(user_id):
         print(discord_connection.id)
         print()
 
+    top = await client.top()
+    for user in top:
+        print(f'{user.discord.full_username}: {user.likes}')
+
     await client.close()
 
 asyncio.run(print_all('465207798968614923'))
