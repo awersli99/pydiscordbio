@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: pydiscordbio
-Version: 1.0.1
+Version: 1.0.2
 Summary: An unoffical asynchronous wrapper for the discord.bio API.
 Home-page: https://github.com/awersli99/pydiscordbio
 Author: awersli99 (Adam Worsley)
