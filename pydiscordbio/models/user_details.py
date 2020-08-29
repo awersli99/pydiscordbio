@@ -9,6 +9,7 @@ GENDER = {
 
 
 def from_datetime(x: str) -> Optional[datetime]:
+    """Returns a parsed datetime object."""
     try:
         return dateutil.parser.parse(x)
     except ValueError:
@@ -16,7 +17,7 @@ def from_datetime(x: str) -> Optional[datetime]:
 
 
 class Discord:
-    """A user's Discord"""
+    """Contains all of a user's discord information."""
     id: int
     username: str
     full_username: str
@@ -51,11 +52,12 @@ class Discord:
 
     @property
     def is_avatar_animated(self) -> bool:
+        """Returns true if a user has a gif profile picture"""
         return bool(self.avatar and self.avatar.startswith('a_'))
 
 
 class User:
-    """A discord.bio user"""
+    """A discord.bio user object"""
     slug: str
     user_id: int
     flags: int
@@ -102,6 +104,7 @@ class User:
         self.likes = obj.get('likes', 0)
 
 class DiscordConnection:
+    """A discord connection object"""
     connection_type: str
     name: str
     id: str
@@ -113,6 +116,7 @@ class DiscordConnection:
         self.id = obj.get([*obj][0]).get("id")
 
 class UserConnections:
+    """Contains all of a user's profile connections"""
     website: Optional[str]
     instagram: Optional[str]
     snapchat: Optional[str]
@@ -128,7 +132,7 @@ class UserConnections:
         self.discord = [DiscordConnection(c) for c in discord]
 
 class PartialUser:
-    """A user consisting of partial data similar to :class:`DBioUser` and full version of :class:`Discord`"""
+    """A user consisting of partial data similar to :class:`User` and full version of :class:`Discord`"""
     slug: str
     verified: bool
     staff: bool
