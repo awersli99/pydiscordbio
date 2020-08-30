@@ -2,6 +2,7 @@
 build.sh
 pydiscordbio.egg-info/
 Docs.md
+gendocs.sh
 dist/
 build/
 __pycache__/
