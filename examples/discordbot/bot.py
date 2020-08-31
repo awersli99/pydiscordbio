@@ -38,6 +38,7 @@ async def user(ctx, identifier):
 
 @client.command()
 async def top(ctx):
+    """Get the top 10 most liked profiles"""
     top_users = await discordbio.top()
     embed = discord.Embed(title='**Top Likes** :heart:', url=f'https://discord.bio/profiles', color=0xff0000)
     for x in top_users[:10]:
