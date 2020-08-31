@@ -46,5 +46,3 @@ async def top(ctx):
     await ctx.send(embed=embed)
 
 client.run(TOKEN)
-
-discordbio.close()
