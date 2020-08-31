@@ -1,0 +1,3 @@
+discord
+pydiscordbio
+python-decouple
