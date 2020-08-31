@@ -29,6 +29,7 @@
 <pre><code class="python">from typing import Optional, List
 from .discord_connection import DiscordConnection
 
+
 class UserConnections:
     &#34;&#34;&#34;Contains all of a user&#39;s profile connections&#34;&#34;&#34;
     website: Optional[str]
@@ -38,12 +39,21 @@ class UserConnections:
     discord: List[DiscordConnection]
 
     def __init__(self, obj: dict, discord: list = []) -&gt; &#39;UserConnections&#39;:
-        assert isinstance(obj, dict), &#39;Received malformed payload from discord.bio API&#39;
-        self.website = obj.get(&#34;website&#34;, None)
-        self.instagram = obj.get(&#34;instagram&#34;, None)
-        self.snapchat = obj.get(&#34;snapchat&#34;, None)
-        self.linkedin = obj.get(&#34;linkedin&#34;, None)
-        self.discord = [DiscordConnection(c) for c in discord]</code></pre>
+        if isinstance(discord, list):
+            self.discord = [DiscordConnection(c) for c in discord]
+        else:
+            self.discord = []
+
+        if isinstance(obj, dict):
+            self.website = obj.get(&#34;website&#34;, None)
+            self.instagram = obj.get(&#34;instagram&#34;, None)
+            self.snapchat = obj.get(&#34;snapchat&#34;, None)
+            self.linkedin = obj.get(&#34;linkedin&#34;, None)
+        else:
+            self.website = None
+            self.instagram = None
+            self.snapchat = None
+            self.linkedin = None</code></pre>
 </details>
 </section>
 <section>
@@ -74,12 +84,21 @@ class UserConnections:
     discord: List[DiscordConnection]
 
     def __init__(self, obj: dict, discord: list = []) -&gt; &#39;UserConnections&#39;:
-        assert isinstance(obj, dict), &#39;Received malformed payload from discord.bio API&#39;
-        self.website = obj.get(&#34;website&#34;, None)
-        self.instagram = obj.get(&#34;instagram&#34;, None)
-        self.snapchat = obj.get(&#34;snapchat&#34;, None)
-        self.linkedin = obj.get(&#34;linkedin&#34;, None)
-        self.discord = [DiscordConnection(c) for c in discord]</code></pre>
+        if isinstance(discord, list):
+            self.discord = [DiscordConnection(c) for c in discord]
+        else:
+            self.discord = []
+
+        if isinstance(obj, dict):
+            self.website = obj.get(&#34;website&#34;, None)
+            self.instagram = obj.get(&#34;instagram&#34;, None)
+            self.snapchat = obj.get(&#34;snapchat&#34;, None)
+            self.linkedin = obj.get(&#34;linkedin&#34;, None)
+        else:
+            self.website = None
+            self.instagram = None
+            self.snapchat = None
+            self.linkedin = None</code></pre>
 </details>
 <h3>Class variables</h3>
 <dl>
