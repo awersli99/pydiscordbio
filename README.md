@@ -1,4 +1,4 @@
-# pydiscordbio
+# pydiscordbio ![PyPI - Downloads](https://img.shields.io/pypi/dw/pydiscordbio) ![PyPI](https://img.shields.io/pypi/v/pydiscordbio)
 
 An unofficial asynchronous Python wrapper for the [discord.bio](https://discord.bio) api.
 
