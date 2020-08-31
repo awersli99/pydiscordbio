@@ -1,5 +1,6 @@
 from .request import RequestClient
-from .models.user_details import UserDetails, PartialUser
+from .models.user_details import UserDetails
+from .models.partial_user import PartialUser
 from .exceptions import UserNotFound, APIError, NotFound
 
 

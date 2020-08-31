@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.9.1" />
-<title>pydiscordbio.client API documentation</title>
+<title>pydiscordbio.models.discord_connection API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,46 +19,24 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>pydiscordbio.client</code></h1>
+<h1 class="title">Module <code>pydiscordbio.models.discord_connection</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from .request import RequestClient
-from .models.user_details import UserDetails
-from .models.partial_user import PartialUser
-from .exceptions import UserNotFound, APIError, NotFound
+<pre><code class="python">class DiscordConnection:
+    &#34;&#34;&#34;A discord connection object&#34;&#34;&#34;
+    connection_type: str
+    name: str
+    id: str
 
-
-class Client:
-    &#34;&#34;&#34;pydiscordbio client&#34;&#34;&#34;
-    def __init__(self, base_url=&#39;https://api.discord.bio/&#39;):
-        self.request_client = RequestClient()
-        self.base_url = base_url
-
-    async def user(self, identifier):
-        &#34;&#34;&#34;Returns a UserDetails object from a specified identifier&#34;&#34;&#34;
-        details, status = await self.request_client.make_request(endpoint=f&#39;{self.base_url}user/details/{str(identifier)}&#39;)
-        if status == 404:
-            raise UserNotFound(&#39;User could not be found&#39;)
-        if status != 200:
-            raise APIError(&#39;There was an error with the API&#39;)
-        return UserDetails(details[&#39;payload&#39;])
-
-    async def top(self):
-        &#34;&#34;&#34;Returns a list of PartialUser objects from the top liked profiles&#34;&#34;&#34;
-        top, status = await self.request_client.make_request(endpoint=f&#39;{self.base_url}user/top&#39;)
-        if status == 404:
-            raise NotFound(&#39;Page could not be found&#39;)
-        if status != 200:
-            raise APIError(&#39;There was an error with the API&#39;)
-        return [PartialUser(u) for u in top[&#39;payload&#39;][&#39;users&#39;]]
-
-    async def close(self):
-        &#34;&#34;&#34;Closes request client&#34;&#34;&#34;
-        await self.request_client.close()</code></pre>
+    def __init__(self, obj: dict) -&gt; &#39;DiscordConnection&#39;:
+        assert isinstance(obj, dict), &#39;Received malformed payload from discord.bio API&#39;
+        self.connection_type = [*obj][0]
+        self.name = obj.get([*obj][0]).get(&#34;name&#34;)
+        self.id = obj.get([*obj][0]).get(&#34;id&#34;)</code></pre>
 </details>
 </section>
 <section>
@@ -70,97 +48,41 @@ class Client:
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="pydiscordbio.client.Client"><code class="flex name class">
-<span>class <span class="ident">Client</span></span>
-<span>(</span><span>base_url='https://api.discord.bio/')</span>
+<dt id="pydiscordbio.models.discord_connection.DiscordConnection"><code class="flex name class">
+<span>class <span class="ident">DiscordConnection</span></span>
+<span>(</span><span>obj: dict)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>pydiscordbio client</p></div>
+<div class="desc"><p>A discord connection object</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class Client:
-    &#34;&#34;&#34;pydiscordbio client&#34;&#34;&#34;
-    def __init__(self, base_url=&#39;https://api.discord.bio/&#39;):
-        self.request_client = RequestClient()
-        self.base_url = base_url
+<pre><code class="python">class DiscordConnection:
+    &#34;&#34;&#34;A discord connection object&#34;&#34;&#34;
+    connection_type: str
+    name: str
+    id: str
 
-    async def user(self, identifier):
-        &#34;&#34;&#34;Returns a UserDetails object from a specified identifier&#34;&#34;&#34;
-        details, status = await self.request_client.make_request(endpoint=f&#39;{self.base_url}user/details/{str(identifier)}&#39;)
-        if status == 404:
-            raise UserNotFound(&#39;User could not be found&#39;)
-        if status != 200:
-            raise APIError(&#39;There was an error with the API&#39;)
-        return UserDetails(details[&#39;payload&#39;])
-
-    async def top(self):
-        &#34;&#34;&#34;Returns a list of PartialUser objects from the top liked profiles&#34;&#34;&#34;
-        top, status = await self.request_client.make_request(endpoint=f&#39;{self.base_url}user/top&#39;)
-        if status == 404:
-            raise NotFound(&#39;Page could not be found&#39;)
-        if status != 200:
-            raise APIError(&#39;There was an error with the API&#39;)
-        return [PartialUser(u) for u in top[&#39;payload&#39;][&#39;users&#39;]]
-
-    async def close(self):
-        &#34;&#34;&#34;Closes request client&#34;&#34;&#34;
-        await self.request_client.close()</code></pre>
+    def __init__(self, obj: dict) -&gt; &#39;DiscordConnection&#39;:
+        assert isinstance(obj, dict), &#39;Received malformed payload from discord.bio API&#39;
+        self.connection_type = [*obj][0]
+        self.name = obj.get([*obj][0]).get(&#34;name&#34;)
+        self.id = obj.get([*obj][0]).get(&#34;id&#34;)</code></pre>
 </details>
-<h3>Methods</h3>
+<h3>Class variables</h3>
 <dl>
-<dt id="pydiscordbio.client.Client.close"><code class="name flex">
-<span>async def <span class="ident">close</span></span>(<span>self)</span>
-</code></dt>
+<dt id="pydiscordbio.models.discord_connection.DiscordConnection.connection_type"><code class="name">var <span class="ident">connection_type</span> : str</code></dt>
 <dd>
-<div class="desc"><p>Closes request client</p></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">async def close(self):
-    &#34;&#34;&#34;Closes request client&#34;&#34;&#34;
-    await self.request_client.close()</code></pre>
-</details>
+<div class="desc"></div>
 </dd>
-<dt id="pydiscordbio.client.Client.top"><code class="name flex">
-<span>async def <span class="ident">top</span></span>(<span>self)</span>
-</code></dt>
+<dt id="pydiscordbio.models.discord_connection.DiscordConnection.id"><code class="name">var <span class="ident">id</span> : str</code></dt>
 <dd>
-<div class="desc"><p>Returns a list of PartialUser objects from the top liked profiles</p></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">async def top(self):
-    &#34;&#34;&#34;Returns a list of PartialUser objects from the top liked profiles&#34;&#34;&#34;
-    top, status = await self.request_client.make_request(endpoint=f&#39;{self.base_url}user/top&#39;)
-    if status == 404:
-        raise NotFound(&#39;Page could not be found&#39;)
-    if status != 200:
-        raise APIError(&#39;There was an error with the API&#39;)
-    return [PartialUser(u) for u in top[&#39;payload&#39;][&#39;users&#39;]]</code></pre>
-</details>
+<div class="desc"></div>
 </dd>
-<dt id="pydiscordbio.client.Client.user"><code class="name flex">
-<span>async def <span class="ident">user</span></span>(<span>self, identifier)</span>
-</code></dt>
+<dt id="pydiscordbio.models.discord_connection.DiscordConnection.name"><code class="name">var <span class="ident">name</span> : str</code></dt>
 <dd>
-<div class="desc"><p>Returns a UserDetails object from a specified identifier</p></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">async def user(self, identifier):
-    &#34;&#34;&#34;Returns a UserDetails object from a specified identifier&#34;&#34;&#34;
-    details, status = await self.request_client.make_request(endpoint=f&#39;{self.base_url}user/details/{str(identifier)}&#39;)
-    if status == 404:
-        raise UserNotFound(&#39;User could not be found&#39;)
-    if status != 200:
-        raise APIError(&#39;There was an error with the API&#39;)
-    return UserDetails(details[&#39;payload&#39;])</code></pre>
-</details>
+<div class="desc"></div>
 </dd>
 </dl>
 </dd>
@@ -175,17 +97,17 @@ class Client:
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="pydiscordbio" href="index.html">pydiscordbio</a></code></li>
+<li><code><a title="pydiscordbio.models" href="index.html">pydiscordbio.models</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="pydiscordbio.client.Client" href="#pydiscordbio.client.Client">Client</a></code></h4>
+<h4><code><a title="pydiscordbio.models.discord_connection.DiscordConnection" href="#pydiscordbio.models.discord_connection.DiscordConnection">DiscordConnection</a></code></h4>
 <ul class="">
-<li><code><a title="pydiscordbio.client.Client.close" href="#pydiscordbio.client.Client.close">close</a></code></li>
-<li><code><a title="pydiscordbio.client.Client.top" href="#pydiscordbio.client.Client.top">top</a></code></li>
-<li><code><a title="pydiscordbio.client.Client.user" href="#pydiscordbio.client.Client.user">user</a></code></li>
+<li><code><a title="pydiscordbio.models.discord_connection.DiscordConnection.connection_type" href="#pydiscordbio.models.discord_connection.DiscordConnection.connection_type">connection_type</a></code></li>
+<li><code><a title="pydiscordbio.models.discord_connection.DiscordConnection.id" href="#pydiscordbio.models.discord_connection.DiscordConnection.id">id</a></code></li>
+<li><code><a title="pydiscordbio.models.discord_connection.DiscordConnection.name" href="#pydiscordbio.models.discord_connection.DiscordConnection.name">name</a></code></li>
 </ul>
 </li>
 </ul>
