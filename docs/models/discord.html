@@ -28,6 +28,7 @@
 </summary>
 <pre><code class="python">from typing import Optional
 
+
 class Discord:
     &#34;&#34;&#34;Contains all of a user&#39;s discord information.&#34;&#34;&#34;
     id: int
@@ -57,7 +58,7 @@ class Discord:
     def avatar_url(self) -&gt; str:
         &#34;&#34;&#34;Returns the user&#39;s avatar as either PNG or GIF&#34;&#34;&#34;
         if not self.avatar:
-            return f&#39;https://cdn.discordapp.com/embed/avatars/&#39; + int(self.discriminator) % 5 + &#39;.png&#39;
+            return &#39;https://cdn.discordapp.com/embed/avatars/&#39; + int(self.discriminator) % 5 + &#39;.png&#39;
         if self.is_avatar_animated:
             return f&#39;https://cdn.discordapp.com/avatars/{self.id}/{self.avatar}.gif&#39;
         return f&#39;https://cdn.discordapp.com/avatars/{self.id}/{self.avatar}.png&#39;
@@ -116,7 +117,7 @@ class Discord:
     def avatar_url(self) -&gt; str:
         &#34;&#34;&#34;Returns the user&#39;s avatar as either PNG or GIF&#34;&#34;&#34;
         if not self.avatar:
-            return f&#39;https://cdn.discordapp.com/embed/avatars/&#39; + int(self.discriminator) % 5 + &#39;.png&#39;
+            return &#39;https://cdn.discordapp.com/embed/avatars/&#39; + int(self.discriminator) % 5 + &#39;.png&#39;
         if self.is_avatar_animated:
             return f&#39;https://cdn.discordapp.com/avatars/{self.id}/{self.avatar}.gif&#39;
         return f&#39;https://cdn.discordapp.com/avatars/{self.id}/{self.avatar}.png&#39;
@@ -162,7 +163,7 @@ class Discord:
 def avatar_url(self) -&gt; str:
     &#34;&#34;&#34;Returns the user&#39;s avatar as either PNG or GIF&#34;&#34;&#34;
     if not self.avatar:
-        return f&#39;https://cdn.discordapp.com/embed/avatars/&#39; + int(self.discriminator) % 5 + &#39;.png&#39;
+        return &#39;https://cdn.discordapp.com/embed/avatars/&#39; + int(self.discriminator) % 5 + &#39;.png&#39;
     if self.is_avatar_animated:
         return f&#39;https://cdn.discordapp.com/avatars/{self.id}/{self.avatar}.gif&#39;
     return f&#39;https://cdn.discordapp.com/avatars/{self.id}/{self.avatar}.png&#39;</code></pre>

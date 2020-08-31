@@ -2,6 +2,7 @@ from .user import User
 from .discord import Discord
 from .user_connections import UserConnections
 
+
 class UserDetails:
     """A discord.bio user object"""
     details: User
@@ -14,4 +15,5 @@ class UserDetails:
         self.details = User(
             obj.get("user", {}).get("details", None))
         self.discord = Discord(obj.get("discord"))
-        self.connections = UserConnections(obj.get("user", {}).get("userConnections"), obj.get("user", {}).get("discordConnections"))
+        self.connections = UserConnections(obj.get("user", {}).get(
+            "userConnections"), obj.get("user", {}).get("discordConnections"))

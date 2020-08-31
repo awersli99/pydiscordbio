@@ -1,5 +1,6 @@
 .DS_Store
 build.sh
+.vscode/
 pydiscordbio.egg-info/
 Docs.md
 gendocs.sh

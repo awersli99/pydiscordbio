@@ -3,6 +3,7 @@ import aiohttp
 
 class RequestClient:
     """Request client used by the client.Client() class"""
+
     def __init__(self):
         self.session = aiohttp.ClientSession(headers={
             "User-Agent": "awersli99/discordbio.py"

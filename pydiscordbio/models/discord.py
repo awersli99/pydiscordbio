@@ -1,5 +1,6 @@
 from typing import Optional
 
+
 class Discord:
     """Contains all of a user's discord information."""
     id: int
@@ -29,7 +30,7 @@ class Discord:
     def avatar_url(self) -> str:
         """Returns the user's avatar as either PNG or GIF"""
         if not self.avatar:
-            return f'https://cdn.discordapp.com/embed/avatars/' + int(self.discriminator) % 5 + '.png'
+            return 'https://cdn.discordapp.com/embed/avatars/' + int(self.discriminator) % 5 + '.png'
         if self.is_avatar_animated:
             return f'https://cdn.discordapp.com/avatars/{self.id}/{self.avatar}.gif'
         return f'https://cdn.discordapp.com/avatars/{self.id}/{self.avatar}.png'

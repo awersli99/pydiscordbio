@@ -30,6 +30,7 @@
 from .discord import Discord
 from .user_connections import UserConnections
 
+
 class UserDetails:
     &#34;&#34;&#34;A discord.bio user object&#34;&#34;&#34;
     details: User
@@ -42,7 +43,8 @@ class UserDetails:
         self.details = User(
             obj.get(&#34;user&#34;, {}).get(&#34;details&#34;, None))
         self.discord = Discord(obj.get(&#34;discord&#34;))
-        self.connections = UserConnections(obj.get(&#34;user&#34;, {}).get(&#34;userConnections&#34;), obj.get(&#34;user&#34;, {}).get(&#34;discordConnections&#34;))</code></pre>
+        self.connections = UserConnections(obj.get(&#34;user&#34;, {}).get(
+            &#34;userConnections&#34;), obj.get(&#34;user&#34;, {}).get(&#34;discordConnections&#34;))</code></pre>
 </details>
 </section>
 <section>
@@ -76,7 +78,8 @@ class UserDetails:
         self.details = User(
             obj.get(&#34;user&#34;, {}).get(&#34;details&#34;, None))
         self.discord = Discord(obj.get(&#34;discord&#34;))
-        self.connections = UserConnections(obj.get(&#34;user&#34;, {}).get(&#34;userConnections&#34;), obj.get(&#34;user&#34;, {}).get(&#34;discordConnections&#34;))</code></pre>
+        self.connections = UserConnections(obj.get(&#34;user&#34;, {}).get(
+            &#34;userConnections&#34;), obj.get(&#34;user&#34;, {}).get(&#34;discordConnections&#34;))</code></pre>
 </details>
 <h3>Class variables</h3>
 <dl>

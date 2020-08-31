@@ -15,6 +15,7 @@ def from_datetime(x: str) -> Optional[datetime]:
     except ValueError:
         return None
 
+
 class User:
     """A discord.bio user object"""
     slug: str

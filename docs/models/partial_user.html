@@ -29,6 +29,7 @@
 <pre><code class="python">from typing import Optional
 from .discord import Discord
 
+
 class PartialUser:
     &#34;&#34;&#34;A user consisting of partial data similar to :class:`User` and full version of :class:`Discord`&#34;&#34;&#34;
     slug: str
@@ -40,14 +41,15 @@ class PartialUser:
     discord: Discord
 
     def __init__(self, obj: dict) -&gt; &#39;PartialUser&#39;:
-        assert isinstance(obj, dict), &#39;Received malformed payload from discord.bio API&#39;
+        assert isinstance(
+            obj, dict), &#39;Received malformed payload from discord.bio API&#39;
         user = obj.get(&#39;user&#39;, {})
         discord = obj.get(&#39;discord&#39;, {})
         self.slug = user.get(&#39;slug&#39;)
         self.verified = bool(user.get(&#39;verified&#39;, 0))
         self.staff = user.get(&#39;staff&#39;, False)
         self.premium = user.get(&#39;premium_status&#39;, False)
-        self.likes =  user.get(&#39;likes&#39;, 0)
+        self.likes = user.get(&#39;likes&#39;, 0)
         self.description = user.get(&#34;description&#34;, None)
         self.discord = Discord(discord)</code></pre>
 </details>
@@ -82,14 +84,15 @@ class PartialUser:
     discord: Discord
 
     def __init__(self, obj: dict) -&gt; &#39;PartialUser&#39;:
-        assert isinstance(obj, dict), &#39;Received malformed payload from discord.bio API&#39;
+        assert isinstance(
+            obj, dict), &#39;Received malformed payload from discord.bio API&#39;
         user = obj.get(&#39;user&#39;, {})
         discord = obj.get(&#39;discord&#39;, {})
         self.slug = user.get(&#39;slug&#39;)
         self.verified = bool(user.get(&#39;verified&#39;, 0))
         self.staff = user.get(&#39;staff&#39;, False)
         self.premium = user.get(&#39;premium_status&#39;, False)
-        self.likes =  user.get(&#39;likes&#39;, 0)
+        self.likes = user.get(&#39;likes&#39;, 0)
         self.description = user.get(&#34;description&#34;, None)
         self.discord = Discord(discord)</code></pre>
 </details>

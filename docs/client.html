@@ -34,13 +34,15 @@ from .exceptions import UserNotFound, APIError, NotFound
 
 class Client:
     &#34;&#34;&#34;pydiscordbio client&#34;&#34;&#34;
+
     def __init__(self, base_url=&#39;https://api.discord.bio/&#39;):
         self.request_client = RequestClient()
         self.base_url = base_url
 
     async def user(self, identifier):
         &#34;&#34;&#34;Returns a UserDetails object from a specified identifier&#34;&#34;&#34;
-        details, status = await self.request_client.make_request(endpoint=f&#39;{self.base_url}user/details/{str(identifier)}&#39;)
+        details, status = await self.request_client.make_request(
+            endpoint=f&#39;{self.base_url}user/details/{str(identifier)}&#39;)
         if status == 404:
             raise UserNotFound(&#39;User could not be found&#39;)
         if status != 200:
@@ -49,7 +51,8 @@ class Client:
 
     async def top(self):
         &#34;&#34;&#34;Returns a list of PartialUser objects from the top liked profiles&#34;&#34;&#34;
-        top, status = await self.request_client.make_request(endpoint=f&#39;{self.base_url}user/top&#39;)
+        top, status = await self.request_client.make_request(
+            endpoint=f&#39;{self.base_url}user/top&#39;)
         if status == 404:
             raise NotFound(&#39;Page could not be found&#39;)
         if status != 200:
@@ -82,13 +85,15 @@ class Client:
 </summary>
 <pre><code class="python">class Client:
     &#34;&#34;&#34;pydiscordbio client&#34;&#34;&#34;
+
     def __init__(self, base_url=&#39;https://api.discord.bio/&#39;):
         self.request_client = RequestClient()
         self.base_url = base_url
 
     async def user(self, identifier):
         &#34;&#34;&#34;Returns a UserDetails object from a specified identifier&#34;&#34;&#34;
-        details, status = await self.request_client.make_request(endpoint=f&#39;{self.base_url}user/details/{str(identifier)}&#39;)
+        details, status = await self.request_client.make_request(
+            endpoint=f&#39;{self.base_url}user/details/{str(identifier)}&#39;)
         if status == 404:
             raise UserNotFound(&#39;User could not be found&#39;)
         if status != 200:
@@ -97,7 +102,8 @@ class Client:
 
     async def top(self):
         &#34;&#34;&#34;Returns a list of PartialUser objects from the top liked profiles&#34;&#34;&#34;
-        top, status = await self.request_client.make_request(endpoint=f&#39;{self.base_url}user/top&#39;)
+        top, status = await self.request_client.make_request(
+            endpoint=f&#39;{self.base_url}user/top&#39;)
         if status == 404:
             raise NotFound(&#39;Page could not be found&#39;)
         if status != 200:
@@ -135,7 +141,8 @@ class Client:
 </summary>
 <pre><code class="python">async def top(self):
     &#34;&#34;&#34;Returns a list of PartialUser objects from the top liked profiles&#34;&#34;&#34;
-    top, status = await self.request_client.make_request(endpoint=f&#39;{self.base_url}user/top&#39;)
+    top, status = await self.request_client.make_request(
+        endpoint=f&#39;{self.base_url}user/top&#39;)
     if status == 404:
         raise NotFound(&#39;Page could not be found&#39;)
     if status != 200:
@@ -154,7 +161,8 @@ class Client:
 </summary>
 <pre><code class="python">async def user(self, identifier):
     &#34;&#34;&#34;Returns a UserDetails object from a specified identifier&#34;&#34;&#34;
-    details, status = await self.request_client.make_request(endpoint=f&#39;{self.base_url}user/details/{str(identifier)}&#39;)
+    details, status = await self.request_client.make_request(
+        endpoint=f&#39;{self.base_url}user/details/{str(identifier)}&#39;)
     if status == 404:
         raise UserNotFound(&#39;User could not be found&#39;)
     if status != 200:
