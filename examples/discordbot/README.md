@@ -1,4 +1,4 @@
-# Discord bot example
+# Discord bot example
 
 A simple bot to display a use case for the [pydiscordbio](https://github.com/awersli99/pydiscordbio) API wrapper.
 
