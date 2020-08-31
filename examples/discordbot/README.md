@@ -19,3 +19,7 @@ A simple bot to display a use case for the [pydiscordbio](https://github.com/awe
 * Get the top 10 liked users
 
 ```?top```
+
+* Check if the bot is alive
+
+```?ping```
