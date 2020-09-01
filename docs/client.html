@@ -29,11 +29,11 @@
 <pre><code class="python">from .request import RequestClient
 from .models.user_details import UserDetails
 from .models.partial_user import PartialUser
-from .exceptions import UserNotFound, APIError, NotFound
+from .exceptions import UserNotFound, APIError, NotFound, InvalidSearch
 
 
 class Client:
-    &#34;&#34;&#34;pydiscordbio client&#34;&#34;&#34;
+    &#34;&#34;&#34;The pydiscordbio client&#34;&#34;&#34;
 
     def __init__(self, base_url=&#39;https://api.discord.bio/&#39;):
         self.request_client = RequestClient()
@@ -59,8 +59,28 @@ class Client:
             raise APIError(&#39;There was an error with the API&#39;)
         return [PartialUser(u) for u in top[&#39;payload&#39;][&#39;users&#39;]]
 
+    async def search(self, query: str):
+        &#34;&#34;&#34;
+
+        Returns a list of PartialUser objects from a query
+
+        This is in the order returned by the API
+
+        &#34;&#34;&#34;
+        if len(query) == 0:
+            raise InvalidSearch(&#39;Query length must be higher than 0&#39;)
+        search, status = await self.request_client.make_request(
+            endpoint=f&#39;{self.base_url}user/search/{str(query)}&#39;)
+        if &#39;message&#39; in search:
+            return []
+        if status == 404:
+            raise NotFound(&#39;Page could not be found&#39;)
+        if status != 200:
+            raise APIError(&#39;There was an error with the API&#39;)
+        return [PartialUser(u) for u in search[&#39;payload&#39;]]
+
     async def close(self):
-        &#34;&#34;&#34;Closes request client&#34;&#34;&#34;
+        &#34;&#34;&#34;Manually closes request client&#34;&#34;&#34;
         await self.request_client.close()</code></pre>
 </details>
 </section>
@@ -78,13 +98,13 @@ class Client:
 <span>(</span><span>base_url='https://api.discord.bio/')</span>
 </code></dt>
 <dd>
-<div class="desc"><p>pydiscordbio client</p></div>
+<div class="desc"><p>The pydiscordbio client</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class Client:
-    &#34;&#34;&#34;pydiscordbio client&#34;&#34;&#34;
+    &#34;&#34;&#34;The pydiscordbio client&#34;&#34;&#34;
 
     def __init__(self, base_url=&#39;https://api.discord.bio/&#39;):
         self.request_client = RequestClient()
@@ -110,8 +130,28 @@ class Client:
             raise APIError(&#39;There was an error with the API&#39;)
         return [PartialUser(u) for u in top[&#39;payload&#39;][&#39;users&#39;]]
 
+    async def search(self, query: str):
+        &#34;&#34;&#34;
+
+        Returns a list of PartialUser objects from a query
+
+        This is in the order returned by the API
+
+        &#34;&#34;&#34;
+        if len(query) == 0:
+            raise InvalidSearch(&#39;Query length must be higher than 0&#39;)
+        search, status = await self.request_client.make_request(
+            endpoint=f&#39;{self.base_url}user/search/{str(query)}&#39;)
+        if &#39;message&#39; in search:
+            return []
+        if status == 404:
+            raise NotFound(&#39;Page could not be found&#39;)
+        if status != 200:
+            raise APIError(&#39;There was an error with the API&#39;)
+        return [PartialUser(u) for u in search[&#39;payload&#39;]]
+
     async def close(self):
-        &#34;&#34;&#34;Closes request client&#34;&#34;&#34;
+        &#34;&#34;&#34;Manually closes request client&#34;&#34;&#34;
         await self.request_client.close()</code></pre>
 </details>
 <h3>Methods</h3>
@@ -120,14 +160,45 @@ class Client:
 <span>async def <span class="ident">close</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Closes request client</p></div>
+<div class="desc"><p>Manually closes request client</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">async def close(self):
-    &#34;&#34;&#34;Closes request client&#34;&#34;&#34;
+    &#34;&#34;&#34;Manually closes request client&#34;&#34;&#34;
     await self.request_client.close()</code></pre>
+</details>
+</dd>
+<dt id="pydiscordbio.client.Client.search"><code class="name flex">
+<span>async def <span class="ident">search</span></span>(<span>self, query: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a list of PartialUser objects from a query</p>
+<p>This is in the order returned by the API</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def search(self, query: str):
+    &#34;&#34;&#34;
+
+    Returns a list of PartialUser objects from a query
+
+    This is in the order returned by the API
+
+    &#34;&#34;&#34;
+    if len(query) == 0:
+        raise InvalidSearch(&#39;Query length must be higher than 0&#39;)
+    search, status = await self.request_client.make_request(
+        endpoint=f&#39;{self.base_url}user/search/{str(query)}&#39;)
+    if &#39;message&#39; in search:
+        return []
+    if status == 404:
+        raise NotFound(&#39;Page could not be found&#39;)
+    if status != 200:
+        raise APIError(&#39;There was an error with the API&#39;)
+    return [PartialUser(u) for u in search[&#39;payload&#39;]]</code></pre>
 </details>
 </dd>
 <dt id="pydiscordbio.client.Client.top"><code class="name flex">
@@ -192,6 +263,7 @@ class Client:
 <h4><code><a title="pydiscordbio.client.Client" href="#pydiscordbio.client.Client">Client</a></code></h4>
 <ul class="">
 <li><code><a title="pydiscordbio.client.Client.close" href="#pydiscordbio.client.Client.close">close</a></code></li>
+<li><code><a title="pydiscordbio.client.Client.search" href="#pydiscordbio.client.Client.search">search</a></code></li>
 <li><code><a title="pydiscordbio.client.Client.top" href="#pydiscordbio.client.Client.top">top</a></code></li>
 <li><code><a title="pydiscordbio.client.Client.user" href="#pydiscordbio.client.Client.user">user</a></code></li>
 </ul>

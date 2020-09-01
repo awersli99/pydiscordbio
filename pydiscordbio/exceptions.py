@@ -11,3 +11,8 @@ class NotFound(Exception):
 class UserNotFound(Exception):
     """Raised when a specified user cannot be found by the API"""
     pass
+
+
+class InvalidSearch(Exception):
+    """Raised when a search query is invalid"""
+    pass

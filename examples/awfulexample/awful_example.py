@@ -51,9 +51,15 @@ async def print_all(user_id):
         print(discord_connection.id)
         print()
 
+    print('\nTop Users:\n')
     top = await client.top()
     for user in top:
         print(f'{user.discord.full_username}: {user.likes}')
+
+    print('\nSearch:\n')
+    search = await client.search('1')
+    for user in search:
+        print(user.discord.username)
 
     await client.close()
 

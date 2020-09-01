@@ -10,8 +10,8 @@ pip install pydiscordbio
 
 ### Usage
 
-* Setting up the client
-> This will be used to make requests to the API
+- Setting up the client
+  > This will be used to make requests to the API
 
 ```py
 from pydiscordbio import Client
@@ -19,16 +19,17 @@ from pydiscordbio import Client
 client = Client()
 ```
 
-* Exceptions
+- Exceptions
 
-| Error | Description |
-| ----- | ----------- |
-| pydiscordbio.exceptions.APIError | Raised when the request to the API itself fails |
-| pydiscordbio.exceptions.NotFound | Raised when the request to the API returns status code 404 |
-| pydiscordbio.errors.UserNotFound | Raised when a user doesn't exist in the API |
+| Error                                 | Description                                                |
+| ------------------------------------- | ---------------------------------------------------------- |
+| pydiscordbio.exceptions.APIError      | Raised when the request to the API itself fails            |
+| pydiscordbio.exceptions.NotFound      | Raised when the request to the API returns status code 404 |
+| pydiscordbio.exceptions.UserNotFound  | Raised when a user doesn't exist in the API                |
+| pydiscordbio.exceptions.InvalidSearch | Raised when a search query is invalid                      |
 
-* Getting a user's details, discord info and connections via username or Discord ID
-> All methods of Client are typed meaning your IDE should auto complete the attributes
+- Getting a user's details, discord info and connections via username or Discord ID
+  > All methods of Client are typed meaning your IDE should auto complete the attributes
 
 ```py
 user = await client.user("wa")
@@ -36,7 +37,7 @@ user = await client.user("wa")
 user = await client.user(738128655145762949)
 ```
 
-* Getting a specific value from a user's details, e.g. description or a users banner URL
+- Getting a specific value from a user's details, e.g. description or a users banner URL
 
 ```py
 description = (await client.user("wa")).details.description
@@ -44,7 +45,7 @@ description = (await client.user("wa")).details.description
 banner_url = (await client.user("wa")).details.banner
 ```
 
-* Getting a specific value from a user's Discord, e.g. discord ID or username
+- Getting a specific value from a user's Discord, e.g. discord ID or username
 
 ```py
 description = (await client.user("wa")).discord.id
@@ -52,7 +53,7 @@ description = (await client.user("wa")).discord.id
 banner_url = (await client.user("wa")).discord.username
 ```
 
-* Getting a user's connected website
+- Getting a user's connected website
 
 ```py
 website = (await client.user("wa")).connections.website
@@ -62,23 +63,30 @@ discord_connections = (await client.user("wa")).connections.discord
 # Returns a list of DiscordConnection objects
 ```
 
-* Miscellaneous Endpoints
+- Miscellaneous Endpoints
 
 ```py
-top_users = await client.top() 
-# Returns a list of PartialUser objects
+top_users = await client.top()
+# Returns a list of PartialUser objects from the top liked profiles
+```
+
+```py
+result = await client.search('Adam')
+# Returns a list of PartialUser objects from the query
 ```
 
 ### Attributes
 
-* UserDetails (from client.user)
+- UserDetails (from client.user)
+
 ```py
 details: User
 discord: Discord
 connections: UserConnections
 ```
 
-* User
+- User
+
 ```py
 slug: str
 user_id: int
@@ -98,7 +106,8 @@ staff: bool
 likes: int
 ```
 
-* Discord
+- Discord
+
 ```py
 id: int
 username: str
@@ -110,7 +119,8 @@ discriminator: str
 flags: int
 ```
 
-* UserConnections
+- UserConnections
+
 ```py
 website: Optional[str]
 instagram: Optional[str]
@@ -119,7 +129,8 @@ linkedin: Optional[str]
 discord: List[DiscordConnection]
 ```
 
-* PartialUser
+- PartialUser
+
 ```py
 slug: str
 verified: bool
@@ -130,7 +141,8 @@ description: Optional[str]
 discord: Discord
 ```
 
-* DiscordConnection
+- DiscordConnection
+
 ```py
 connection_type: str
 name: str

@@ -30,7 +30,7 @@
 
 
 class RequestClient:
-    &#34;&#34;&#34;Request client used by the client.Client() class&#34;&#34;&#34;
+    &#34;&#34;&#34;The HTTP request client&#34;&#34;&#34;
 
     def __init__(self):
         self.session = aiohttp.ClientSession(headers={
@@ -60,13 +60,13 @@ class RequestClient:
 <span>class <span class="ident">RequestClient</span></span>
 </code></dt>
 <dd>
-<div class="desc"><p>Request client used by the client.Client() class</p></div>
+<div class="desc"><p>The HTTP request client</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class RequestClient:
-    &#34;&#34;&#34;Request client used by the client.Client() class&#34;&#34;&#34;
+    &#34;&#34;&#34;The HTTP request client&#34;&#34;&#34;
 
     def __init__(self):
         self.session = aiohttp.ClientSession(headers={

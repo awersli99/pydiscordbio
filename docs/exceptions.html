@@ -38,6 +38,11 @@ class NotFound(Exception):
 
 class UserNotFound(Exception):
     &#34;&#34;&#34;Raised when a specified user cannot be found by the API&#34;&#34;&#34;
+    pass
+
+
+class InvalidSearch(Exception):
+    &#34;&#34;&#34;Raised when a search query is invalid&#34;&#34;&#34;
     pass</code></pre>
 </details>
 </section>
@@ -62,6 +67,26 @@ class UserNotFound(Exception):
 </summary>
 <pre><code class="python">class APIError(Exception):
     &#34;&#34;&#34;Raised when there is an API error&#34;&#34;&#34;
+    pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="pydiscordbio.exceptions.InvalidSearch"><code class="flex name class">
+<span>class <span class="ident">InvalidSearch</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Raised when a search query is invalid</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class InvalidSearch(Exception):
+    &#34;&#34;&#34;Raised when a search query is invalid&#34;&#34;&#34;
     pass</code></pre>
 </details>
 <h3>Ancestors</h3>
@@ -128,6 +153,9 @@ class UserNotFound(Exception):
 <ul>
 <li>
 <h4><code><a title="pydiscordbio.exceptions.APIError" href="#pydiscordbio.exceptions.APIError">APIError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="pydiscordbio.exceptions.InvalidSearch" href="#pydiscordbio.exceptions.InvalidSearch">InvalidSearch</a></code></h4>
 </li>
 <li>
 <h4><code><a title="pydiscordbio.exceptions.NotFound" href="#pydiscordbio.exceptions.NotFound">NotFound</a></code></h4>

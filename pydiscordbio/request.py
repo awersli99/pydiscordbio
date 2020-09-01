@@ -2,7 +2,7 @@ import aiohttp
 
 
 class RequestClient:
-    """Request client used by the client.Client() class"""
+    """The HTTP request client"""
 
     def __init__(self):
         self.session = aiohttp.ClientSession(headers={
