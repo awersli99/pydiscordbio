@@ -57,7 +57,7 @@ async def print_all(user_id):
         print(f'{user.discord.full_username}: {user.likes}')
 
     print('\nSearch:\n')
-    search = await client.search('1')
+    search = await client.search('Adam')
     for user in search:
         print(user.discord.username)
 
