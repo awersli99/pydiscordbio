@@ -12,7 +12,7 @@ class Discord:
     discriminator: str
     flags: int
 
-    def __init__(self, obj: dict) -> 'Discord':
+    def __init__(self, obj: dict) -> 'None':
         assert isinstance(
             obj, dict), 'Received malformed payload from discord.bio API'
         self.id = int(obj.get("id"))
@@ -30,7 +30,7 @@ class Discord:
     def avatar_url(self) -> str:
         """Returns the user's avatar as either PNG or GIF"""
         if not self.avatar:
-            return 'https://cdn.discordapp.com/embed/avatars/' + int(self.discriminator) % 5 + '.png'
+            return 'https://cdn.discordapp.com/embed/avatars/' + str(int(self.discriminator) % 5) + '.png'
         if self.is_avatar_animated:
             return f'https://cdn.discordapp.com/avatars/{self.id}/{self.avatar}.gif'
         return f'https://cdn.discordapp.com/avatars/{self.id}/{self.avatar}.png'

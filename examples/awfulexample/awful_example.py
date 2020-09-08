@@ -63,4 +63,4 @@ async def print_all(user_id):
 
     await client.close()
 
-asyncio.run(print_all("yes"))
+asyncio.run(print_all("wa"))

@@ -9,3 +9,10 @@ build/
 __pycache__/
 pydiscordbio/__pycache__/
 pydiscordbio/models/__pycache__/
+.idea/.gitignore
+.idea/discord.xml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/pydiscordbio.iml
+.idea/vcs.xml

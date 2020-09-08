@@ -10,7 +10,9 @@ class UserConnections:
     linkedin: Optional[str]
     discord: List[DiscordConnection]
 
-    def __init__(self, obj: dict, discord: list = []) -> 'UserConnections':
+    def __init__(self, obj: dict, discord=None) -> 'None':
+        if discord is None:
+            discord = []
         if isinstance(discord, list):
             self.discord = [DiscordConnection(c) for c in discord]
         else:

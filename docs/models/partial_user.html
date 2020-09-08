@@ -40,7 +40,7 @@ class PartialUser:
     description: Optional[str]
     discord: Discord
 
-    def __init__(self, obj: dict) -&gt; &#39;PartialUser&#39;:
+    def __init__(self, obj: dict) -&gt; &#39;None&#39;:
         assert isinstance(
             obj, dict), &#39;Received malformed payload from discord.bio API&#39;
         user = obj.get(&#39;user&#39;, {})
@@ -83,7 +83,7 @@ class PartialUser:
     description: Optional[str]
     discord: Discord
 
-    def __init__(self, obj: dict) -&gt; &#39;PartialUser&#39;:
+    def __init__(self, obj: dict) -&gt; &#39;None&#39;:
         assert isinstance(
             obj, dict), &#39;Received malformed payload from discord.bio API&#39;
         user = obj.get(&#39;user&#39;, {})

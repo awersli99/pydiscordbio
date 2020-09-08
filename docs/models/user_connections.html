@@ -38,7 +38,9 @@ class UserConnections:
     linkedin: Optional[str]
     discord: List[DiscordConnection]
 
-    def __init__(self, obj: dict, discord: list = []) -&gt; &#39;UserConnections&#39;:
+    def __init__(self, obj: dict, discord=None) -&gt; &#39;None&#39;:
+        if discord is None:
+            discord = []
         if isinstance(discord, list):
             self.discord = [DiscordConnection(c) for c in discord]
         else:
@@ -67,7 +69,7 @@ class UserConnections:
 <dl>
 <dt id="pydiscordbio.models.user_connections.UserConnections"><code class="flex name class">
 <span>class <span class="ident">UserConnections</span></span>
-<span>(</span><span>obj: dict, discord: list = [])</span>
+<span>(</span><span>obj: dict, discord=None)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Contains all of a user's profile connections</p></div>
@@ -83,7 +85,9 @@ class UserConnections:
     linkedin: Optional[str]
     discord: List[DiscordConnection]
 
-    def __init__(self, obj: dict, discord: list = []) -&gt; &#39;UserConnections&#39;:
+    def __init__(self, obj: dict, discord=None) -&gt; &#39;None&#39;:
+        if discord is None:
+            discord = []
         if isinstance(discord, list):
             self.discord = [DiscordConnection(c) for c in discord]
         else:

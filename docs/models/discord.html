@@ -40,7 +40,7 @@ class Discord:
     discriminator: str
     flags: int
 
-    def __init__(self, obj: dict) -&gt; &#39;Discord&#39;:
+    def __init__(self, obj: dict) -&gt; &#39;None&#39;:
         assert isinstance(
             obj, dict), &#39;Received malformed payload from discord.bio API&#39;
         self.id = int(obj.get(&#34;id&#34;))
@@ -58,7 +58,7 @@ class Discord:
     def avatar_url(self) -&gt; str:
         &#34;&#34;&#34;Returns the user&#39;s avatar as either PNG or GIF&#34;&#34;&#34;
         if not self.avatar:
-            return &#39;https://cdn.discordapp.com/embed/avatars/&#39; + int(self.discriminator) % 5 + &#39;.png&#39;
+            return &#39;https://cdn.discordapp.com/embed/avatars/&#39; + str(int(self.discriminator) % 5) + &#39;.png&#39;
         if self.is_avatar_animated:
             return f&#39;https://cdn.discordapp.com/avatars/{self.id}/{self.avatar}.gif&#39;
         return f&#39;https://cdn.discordapp.com/avatars/{self.id}/{self.avatar}.png&#39;
@@ -99,7 +99,7 @@ class Discord:
     discriminator: str
     flags: int
 
-    def __init__(self, obj: dict) -&gt; &#39;Discord&#39;:
+    def __init__(self, obj: dict) -&gt; &#39;None&#39;:
         assert isinstance(
             obj, dict), &#39;Received malformed payload from discord.bio API&#39;
         self.id = int(obj.get(&#34;id&#34;))
@@ -117,7 +117,7 @@ class Discord:
     def avatar_url(self) -&gt; str:
         &#34;&#34;&#34;Returns the user&#39;s avatar as either PNG or GIF&#34;&#34;&#34;
         if not self.avatar:
-            return &#39;https://cdn.discordapp.com/embed/avatars/&#39; + int(self.discriminator) % 5 + &#39;.png&#39;
+            return &#39;https://cdn.discordapp.com/embed/avatars/&#39; + str(int(self.discriminator) % 5) + &#39;.png&#39;
         if self.is_avatar_animated:
             return f&#39;https://cdn.discordapp.com/avatars/{self.id}/{self.avatar}.gif&#39;
         return f&#39;https://cdn.discordapp.com/avatars/{self.id}/{self.avatar}.png&#39;
@@ -163,7 +163,7 @@ class Discord:
 def avatar_url(self) -&gt; str:
     &#34;&#34;&#34;Returns the user&#39;s avatar as either PNG or GIF&#34;&#34;&#34;
     if not self.avatar:
-        return &#39;https://cdn.discordapp.com/embed/avatars/&#39; + int(self.discriminator) % 5 + &#39;.png&#39;
+        return &#39;https://cdn.discordapp.com/embed/avatars/&#39; + str(int(self.discriminator) % 5) + &#39;.png&#39;
     if self.is_avatar_animated:
         return f&#39;https://cdn.discordapp.com/avatars/{self.id}/{self.avatar}.gif&#39;
     return f&#39;https://cdn.discordapp.com/avatars/{self.id}/{self.avatar}.png&#39;</code></pre>

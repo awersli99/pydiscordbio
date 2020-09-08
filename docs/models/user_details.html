@@ -37,7 +37,7 @@ class UserDetails:
     discord: Discord
     connections: UserConnections
 
-    def __init__(self, obj: dict) -&gt; &#39;UserDetails&#39;:
+    def __init__(self, obj: dict) -&gt; &#39;None&#39;:
         assert isinstance(
             obj, dict), &#39;Received malformed payload from discord.bio API&#39;
         self.details = User(
@@ -72,7 +72,7 @@ class UserDetails:
     discord: Discord
     connections: UserConnections
 
-    def __init__(self, obj: dict) -&gt; &#39;UserDetails&#39;:
+    def __init__(self, obj: dict) -&gt; &#39;None&#39;:
         assert isinstance(
             obj, dict), &#39;Received malformed payload from discord.bio API&#39;
         self.details = User(

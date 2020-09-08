@@ -4,7 +4,7 @@ class DiscordConnection:
     name: str
     id: str
 
-    def __init__(self, obj: dict) -> 'DiscordConnection':
+    def __init__(self, obj: dict) -> 'None':
         assert isinstance(
             obj, dict), 'Received malformed payload from discord.bio API'
         self.connection_type = [*obj][0]

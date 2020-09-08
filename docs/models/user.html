@@ -54,7 +54,7 @@ class User:
     created_at: datetime
     description: str
     location: str
-    gender: int
+    gender: Optional[str]
     birthday: Optional[datetime]
     email: Optional[str]
     occupation: Optional[str]
@@ -63,7 +63,7 @@ class User:
     staff: bool
     likes: int
 
-    def __init__(self, obj: dict) -&gt; &#39;User&#39;:
+    def __init__(self, obj: dict) -&gt; &#39;None&#39;:
         assert isinstance(
             obj, dict), &#39;Received malformed payload from discord.bio API&#39;
         self.slug = obj.get(&#34;slug&#34;)
@@ -141,7 +141,7 @@ class User:
     created_at: datetime
     description: str
     location: str
-    gender: int
+    gender: Optional[str]
     birthday: Optional[datetime]
     email: Optional[str]
     occupation: Optional[str]
@@ -150,7 +150,7 @@ class User:
     staff: bool
     likes: int
 
-    def __init__(self, obj: dict) -&gt; &#39;User&#39;:
+    def __init__(self, obj: dict) -&gt; &#39;None&#39;:
         assert isinstance(
             obj, dict), &#39;Received malformed payload from discord.bio API&#39;
         self.slug = obj.get(&#34;slug&#34;)
@@ -204,7 +204,7 @@ class User:
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="pydiscordbio.models.user.User.gender"><code class="name">var <span class="ident">gender</span> : int</code></dt>
+<dt id="pydiscordbio.models.user.User.gender"><code class="name">var <span class="ident">gender</span> : Union[str, NoneType]</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>

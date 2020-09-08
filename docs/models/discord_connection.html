@@ -32,7 +32,7 @@
     name: str
     id: str
 
-    def __init__(self, obj: dict) -&gt; &#39;DiscordConnection&#39;:
+    def __init__(self, obj: dict) -&gt; &#39;None&#39;:
         assert isinstance(
             obj, dict), &#39;Received malformed payload from discord.bio API&#39;
         self.connection_type = [*obj][0]
@@ -65,7 +65,7 @@
     name: str
     id: str
 
-    def __init__(self, obj: dict) -&gt; &#39;DiscordConnection&#39;:
+    def __init__(self, obj: dict) -&gt; &#39;None&#39;:
         assert isinstance(
             obj, dict), &#39;Received malformed payload from discord.bio API&#39;
         self.connection_type = [*obj][0]

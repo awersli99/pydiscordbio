@@ -12,7 +12,7 @@ class PartialUser:
     description: Optional[str]
     discord: Discord
 
-    def __init__(self, obj: dict) -> 'PartialUser':
+    def __init__(self, obj: dict) -> 'None':
         assert isinstance(
             obj, dict), 'Received malformed payload from discord.bio API'
         user = obj.get('user', {})

@@ -26,7 +26,7 @@ class User:
     created_at: datetime
     description: str
     location: str
-    gender: int
+    gender: Optional[str]
     birthday: Optional[datetime]
     email: Optional[str]
     occupation: Optional[str]
@@ -35,7 +35,7 @@ class User:
     staff: bool
     likes: int
 
-    def __init__(self, obj: dict) -> 'User':
+    def __init__(self, obj: dict) -> 'None':
         assert isinstance(
             obj, dict), 'Received malformed payload from discord.bio API'
         self.slug = obj.get("slug")
