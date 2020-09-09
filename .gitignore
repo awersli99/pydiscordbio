@@ -16,3 +16,5 @@ pydiscordbio/models/__pycache__/
 .idea/modules.xml
 .idea/pydiscordbio.iml
 .idea/vcs.xml
+.idea/workspace.xml
+venv/

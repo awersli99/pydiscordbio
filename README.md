@@ -96,7 +96,7 @@ premium_type: int
 created_at: datetime
 description: str
 location: str
-gender: int
+gender: Optional[str]
 birthday: Optional[datetime]
 email: Optional[str]
 occupation: Optional[str]
